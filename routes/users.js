@@ -26,4 +26,28 @@ router.get('/:id', (req, res) => {
     res.status(201).json(newUser);
   });
   
+  // PATCH - Update a user
+router.patch('/:id', (req, res) => {
+    const { username, email } = req.body;
+    const updatedUser = userModel.updateUser(req.params.id, { username, email });
+    
+    if (!updatedUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    res.json(updatedUser);
+  });
   
+  // DELETE - Remove a user
+  router.delete('/:id', (req, res) => {
+    const success = userModel.deleteUser(req.params.id);
+    
+    if (!success) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    res.status(204).end();
+  });
+  
+  module.exports = router;
+ 

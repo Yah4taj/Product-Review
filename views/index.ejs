@@ -1,0 +1,75 @@
+
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-container">
+        <h1>Product Review Platform</h1>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/products">Products</a></li>
+          <li><a href="/api/products">API</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <% if (locals.error) { %>
+      <div class="error-message">
+        <p><%= error %></p>
+      </div>
+    <% } else { %>
+      <section class="hero">
+        <h2>Welcome to our Product Review Platform</h2>
+        <p>Browse products and share your reviews!</p>
+      </section>
+
+      <section class="featured-products">
+        <h3>Featured Products</h3>
+        <div class="product-grid">
+          <% if (locals.featuredProducts && featuredProducts.length > 0) { %>
+            <% featuredProducts.forEach(product => { %>
+              <div class="product-card">
+                <h4><%= product.name %></h4>
+                <p class="price">$<%= product.price.toFixed(2) %></p>
+                <p><%= product.description %></p>
+                <div class="product-actions">
+                  <a href="/products/<%= product.id %>" class="btn">View Details</a>
+                </div>
+              </div>
+            <% }) %>
+          <% } else { %>
+            <p>No featured products available.</p>
+          <% } %>
+        </div>
+      </section>
+
+      <section class="api-info">
+        <h3>API Endpoints</h3>
+        <ul>
+          <% if (locals.apiEndpoints && apiEndpoints.length > 0) { %>
+            <% apiEndpoints.forEach(endpoint => { %>
+              <li>
+                <strong><%= endpoint.path %></strong>: <%= endpoint.description %>
+              </li>
+            <% }) %>
+          <% } %>
+        </ul>
+      </section>
+    <% } %>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Product Review Platform</p>
+  </footer>
+</body>
+</html>

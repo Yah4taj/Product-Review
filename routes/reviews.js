@@ -31,3 +31,46 @@ router.get('/:id', (req, res) => {
   
   res.json(review);
 });
+// POST - Create a new review
+router.post('/', validateReview, (req, res, next) => {
+  // Validate that the product and user exist
+  const product = productModel.getProductById(req.body.productId);
+  const user = userModel.getUserById(req.body.userId);
+  
+  if (!product) {
+    return res.status(404).json({ error: 'Product not found' });
+  }
+  
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+  
+  try {
+    const newReview = reviewModel.createReview(req.body);
+    res.status(201).json(newReview);
+  } catch (error) {
+    next(error);
+  }
+});
+// PATCH - Update a review
+router.patch('/:id', (req, res) => {
+  const updatedReview = reviewModel.updateReview(req.params.id, req.body);
+  
+  if (!updatedReview) {
+    return res.status(404).json({ error: 'Review not found' });
+  }
+  
+  res.json(updatedReview);
+});
+ // DELETE - Remove a review
+ router.delete('/:id', (req, res) => {
+  const success = reviewModel.deleteReview(req.params.id);
+  
+  if (!success) {
+    return res.status(404).json({ error: 'Review not found' });
+  }
+  
+  res.status(204).end();
+});
+
+module.exports = router;
