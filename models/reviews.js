@@ -33,4 +33,62 @@ let reviews = [
         createdAt: '2023-03-22T11:45:00Z'
       }
     ];
+    const getAllReviews = (filters = {}) => {
+      let filteredReviews = [...reviews];
+      
+      // Apply filters
+      if (filters.productId) {
+        filteredReviews = filteredReviews.filter(review => review.productId === filters.productId);
+      }
+      
+      if (filters.userId) {
+        filteredReviews = filteredReviews.filter(review => review.userId === filters.userId);
+      }
+      
+      if (filters.minRating) {
+        filteredReviews = filteredReviews.filter(review => review.rating >= parseInt(filters.minRating));
+      }
+      
+      if (filters.maxRating) {
+        filteredReviews = filteredReviews.filter(review => review.rating <= parseInt(filters.maxRating));
+      }
+      
+      return filteredReviews;
+    };
+
+    const getReviewById = (id) => {
+      return reviews.find(review => review.id === id);
+    };
+    
+    const createReview = (reviewData) => {
+      const newReview = {
+        id: uuidv4(),
+        ...reviewData,
+        rating: parseInt(reviewData.rating),
+        createdAt: new Date().toISOString()
+      };
+      
+      reviews.push(newReview);
+      return newReview;
+    };
+    const updateReview = (id, reviewData) => {
+      const index = reviews.findIndex(review => review.id === id);
+      
+      if (index === -1) return null;
+      
+      const updatedReview = {
+        ...reviews[index],
+        ...reviewData,
+        id: reviews[index].id, // Ensure ID doesn't change
+        updatedAt: new Date().toISOString()
+      };
+      
+      // Convert numeric fields
+      if (reviewData.rating !== undefined) {
+        updatedReview.rating = parseInt(reviewData.rating);
+      }
+      
+      reviews[index] = updatedReview;
+      return updatedReview;
+    };
     
