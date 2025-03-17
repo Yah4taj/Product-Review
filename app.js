@@ -3,21 +3,13 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
-//import routes
-const userRoutes = require("./routes/users");
-const productsRoutes = require("./routes/products");
-const reviewsRoutes = require("morgan");
-
-//import custom middleware
-const logger = require("./middleware/logger");
-const errorHandler = require("./middleware/errorHandler");
-
 const app = express();
-const PORT = 3000;
+const PORT = process.env. PORT || 3000;
 
 //view engine
 app.set("view engine", "ejs");
-app.set("views", path(_dirname, "views"));
+18
+
 
 //Built in middleware
 
@@ -26,12 +18,27 @@ app.use(bodyparser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev")); //http request logger
 
+
+//import custom middleware
+const logger = require("./middleware/logger");
+const errorHandler = require("./middleware/errorHandler");
+
+//Custom middleware
+
+app.use(logger.requestLogger);
+
+//import routes
+const userRoutes = require("./routes/users");
+const productsRoutes = require("./routes/products");
+const reviewsRoutes = require("morgan");
+
+
 //Custom middleware
 
 app.use(logger.requestLogger);
 
 //Routes
-app.use("/api/users", usersRoutes);
+app.use("/api/users", userRoutes);
 app.use("api/products", productsRoutes);
 app.use("/api/reviews", reviewsRoutes);
 
