@@ -91,4 +91,20 @@ let reviews = [
       reviews[index] = updatedReview;
       return updatedReview;
     };
+    const deleteReview = (id) => {
+      const index = reviews.findIndex(review => review.id === id);
+      
+      if (index === -1) return false;
+      
+      reviews.splice(index, 1);
+      return true;
+    };
+    
+    module.exports = {
+      getAllReviews,
+      getReviewById,
+      createReview,
+      updateReview,
+      deleteReview
+    };
     
