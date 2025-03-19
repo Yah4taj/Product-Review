@@ -9,7 +9,8 @@ let products = [
     category: 'electronics',
     featured: true,
     inStock: true,
-    createdAt: '2023-03-10T14:22:00Z'
+    createdAt: '2023-03-10T14:22:00Z',
+    // imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: '2',
@@ -19,7 +20,8 @@ let products = [
     category: 'electronics',
     featured: false,
     inStock: true,
-    createdAt: '2023-03-15T09:45:00Z'
+    createdAt: '2023-03-15T09:45:00Z',
+    // imageURL: '/https://images.unsplash.com/photo-1505236273191-1dce886b01e9?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: '3',
@@ -29,9 +31,11 @@ let products = [
     category: 'home',
     featured: true,
     inStock: true,
-    createdAt: '2023-03-20T11:30:00Z'
+    createdAt: '2023-03-20T11:30:00Z',
+    // imageURL: 'https://images.unsplash.com/photo-1608354580875-30bd4168b351?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29mZmVlJTIwbWFrZXJ8ZW58MHx8MHx8fDA%3D'
   }
 ];
+
 
 const getAllProducts = (filters = {}) => {
   let filteredProducts = [...products];
