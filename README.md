@@ -1,12 +1,13 @@
-# Product Review Platform     (Note* Experienced challeges with retrieving images for the three smaple products ( image URLs commented out still hindered functionality so images removed ))
+# Product Review Platform     (Note* Experienced challeges with retrieving images for the three featured products ( commented out image URLs but functionality was still hindered..... images and related code removed.........troubleshooting ))
 
-A  web application for product reviews, built with Express.js and EJS templating.
+A web application for product reviews, built with Express.js and EJS templating.
 
-## Features
-
-- Browsable product catalog with detailed product pages
-- User review system with ratings and comments
-- RESTful API endpoints for users, products, and reviews
+ The intention was to have all of the following features:
+ 
+* Browsable product catalog with detailed product pages
+* User review system with ratings and comments
+(* Featured products showcase on homepage)
+* RESTful API endpoints for users, products, and reviews
 
 
 ## Tech 
@@ -36,4 +37,4 @@ A  web application for product reviews, built with Express.js and EJS templating
 - `/products/:id/add-review` - Form to add a new review
 
 
-Note* Experienced challeges with retrieving images for the three smaple products ( image URLs are commented out )
+
