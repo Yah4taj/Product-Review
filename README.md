@@ -6,11 +6,10 @@ A  web application for product reviews, built with Express.js and EJS templating
 
 - Browsable product catalog with detailed product pages
 - User review system with ratings and comments
-- Featured products showcase on homepage
 - RESTful API endpoints for users, products, and reviews
-- Responsive design for mobile and desktop
 
-## Tech Stack
+
+## Tech 
 
 - **Backend**: Node.js with Express.js
 - **Frontend**: EJS templating, HTML, CSS, JavaScript
