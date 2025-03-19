@@ -1,4 +1,4 @@
-# Product Review Platform     (Note* Experienced challeges with retrieving images for the three smaple products ( image URLs are commented out ))
+# Product Review Platform     (Note* Experienced challeges with retrieving images for the three smaple products ( image URLs commented out still hindered functionality so images removed ))
 
 A  web application for product reviews, built with Express.js and EJS templating.
 
